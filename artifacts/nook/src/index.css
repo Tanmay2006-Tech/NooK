@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Syne+Mono:wght@400&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@theme inline {
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --color-border: var(--rule);
+  --color-input: var(--paper);
+  --color-ring: var(--ink);
+  --color-primary: var(--accent);
+  --color-primary-foreground: var(--paper);
+
+  --font-sans: 'Syne', sans-serif;
+  --font-mono: 'Syne Mono', monospace;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+
+  --shadow-2xs: none;
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-2xl: none;
+}
+
+:root {
+  --ink: #0D0D0D;
+  --paper: #F7F4EE;
+  --paper2: #EDEAE2;
+  --rule: #B8B0A0;
+  --accent: #C84B16;
+  --accent2: #2A6B4A;
+
+  --seat-free: #BAD6A6;
+  --seat-free-border: #78A85E;
+  --seat-occ: #E8A888;
+  --seat-occ-border: #C06838;
+  --seat-away: #EDD884;
+  --seat-away-border: #C4A030;
+  --seat-mine: #A4BEE8;
+  --seat-mine-border: #4E72C0;
+  --seat-empty: #D8D4CC;
+  --seat-empty-border: #B0ACA4;
+
+  --radius: 0px;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    border-radius: 0px !important;
+    box-shadow: none !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-[var(--paper)] text-[var(--ink)];
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: var(--paper2); }
+  ::-webkit-scrollbar-thumb { background: var(--rule); }
+
+  button:hover:not(:disabled) { filter: brightness(0.88); }
+  button:active:not(:disabled) { transform: scale(0.97); }
+
+  ::selection {
+    background: var(--ink);
+    color: var(--paper);
+  }
+}
+
+/* ── Seat animations ── */
+@keyframes seatPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes awayBlink {
+  0%, 100% { background-color: var(--seat-away); }
+  50% { background-color: var(--seat-empty); }
+}
+
+.animate-pulse-seat { animation: seatPulse 2.8s ease-in-out infinite; }
+.animate-blink-away { animation: awayBlink 1.6s ease-in-out infinite; }
