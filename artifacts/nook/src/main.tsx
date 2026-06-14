@@ -4,6 +4,6 @@ import "./index.css";
 
 import { setBaseUrl } from "../../../lib/api-client-react/src/custom-fetch";
 
-setBaseUrl("https://workspaceapi-server-production-ac11.up.railway.app");
+setBaseUrl("https://nook-api-ffzt.onrender.com");
 
 createRoot(document.getElementById("root")!).render(<App />);
